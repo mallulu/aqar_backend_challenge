@@ -4,9 +4,10 @@ const apartmentDefs = gql`
 
     type Apartment {
         ApartmentID: Int
+        ApartmentName: String
         City: City
         District: District
-        ApartmentCoordinates: Float
+        ApartmentCoordinates: Coordinates
     }
 
     extend type Apartment {
@@ -15,6 +16,7 @@ const apartmentDefs = gql`
 
     extend type Query {
         apartments: [Apartment]
+        fetchAvailableApartments(fromDate: String!, toDate: String!): [Apartment]
     }
 
 `

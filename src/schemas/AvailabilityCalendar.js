@@ -2,15 +2,17 @@ const { gql } = require('apollo-server-express');
 
 const availabilityCalendarDefs = gql`
 
-    type Apartment {
-        ApartmentID: Int
-        City: City
-        District: District
-        ApartmentCoordinates: POINT
+    type AvailabilityCalendar {
+        AvailabilityCalendarID: Int
+        Apartment: Apartment
+        FromDate: String
+        ToDate: String
     }
 
     extend type Query {
-        apartments: [Apartment]
+        availabilityCalendars: [AvailabilityCalendar]
+        isApartmentAvailable(apartmentId: Int!, date: String): Boolean 
+        fetchApartmentAvailabilityTimes(apartmentId: Int!): [AvailabilityCalendar]
     }
 
 `

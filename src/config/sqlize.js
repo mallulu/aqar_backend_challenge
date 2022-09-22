@@ -1,7 +1,7 @@
 const Sqlize = require("sequelize");
 
 module.exports = new Sqlize(
-    'AQAR_DB', 
+    'AQAR', 
     'testuser', 
     '3gD4XH1pS9n', 
     {

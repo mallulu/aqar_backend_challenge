@@ -3,6 +3,7 @@ const cityDefs = require('./Cities');
 const districtDefs = require('./Districts');
 const apartmentDefs = require('./Apartments');
 const availabilityCalendarDefs = require('./AvailabilityCalendar');
+const coordinateDefs = require('./Coordinates');
 
 const rootSchema = gql`
 
@@ -20,6 +21,7 @@ module.exports = [
     rootSchema,
     cityDefs,
     districtDefs,
+    coordinateDefs,
     apartmentDefs,
     availabilityCalendarDefs
 ];

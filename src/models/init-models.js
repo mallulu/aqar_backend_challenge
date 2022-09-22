@@ -1,4 +1,4 @@
-const sqlize = require('../src/config/sqlize');
+const sqlize = require('../config/sqlize');
 var DataTypes = require("sequelize").DataTypes;
 var _Apartments = require("./Apartments");
 var _AvailabilityCalendar = require("./AvailabilityCalendar");
