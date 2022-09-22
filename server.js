@@ -13,7 +13,7 @@ const server = new ApolloServer({typeDefs: schema, resolvers: resolvers });
 db.authenticate().then(() => {
     server.start().then(() => {
         server.applyMiddleware( { app });
-        app.listen(3000, console.log('server started bla bla'));
+        app.listen(3000, console.log('Server running on port 3000'));
     })
 }).catch((error) => {
     console.log('no connection', error);
