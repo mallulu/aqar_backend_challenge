@@ -27,6 +27,5 @@ function initModels(sequelize) {
     Districts,
   };
 }
-module.exports = initModels;
-module.exports.initModels = initModels;
-module.exports.default = initModels;
+const models = initModels(sqlize);
+module.exports = models;
