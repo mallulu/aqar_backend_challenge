@@ -1,0 +1,19 @@
+{
+  "name": "aqar-challenge",
+  "version": "1.0.0",
+  "description": "Aqar Backend Challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mallulu@github.com/mallulu/aqar_backend_challenge.git"
+  },
+  "author": "M. Allulu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mallulu/aqar_backend_challenge/issues"
+  },
+  "homepage": "https://github.com/mallulu/aqar_backend_challenge#readme"
+}
