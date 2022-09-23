@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  mysqldb:
+    image: mysql
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+    volumes:
+    - ./sample_data:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "--password=123456"]
+      interval: 2s
+      timeout: 20s
+      retries: 5
+  app:
+    depends_on:
+      mysqldb:
+        condition: service_healthy
+    build: ./
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - 8080:3000
+    environment:
+      - DB_HOST=host.docker.internal
+      - DB_USER=$MYSQLDB_USER
+      - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - DB_NAME=$MYSQLDB_DATABASE
+      - DB_PORT=$MYSQLDB_LOCAL_PORT
+    stdin_open: true
+    tty: true
+
+volumes: 
+  db:

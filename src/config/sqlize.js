@@ -1,12 +1,13 @@
 const Sqlize = require("sequelize");
+require('dotenv').config();
 
 module.exports = new Sqlize(
-    'AQAR', 
-    'testuser', 
-    '3gD4XH1pS9n', 
+    process.env.DB_NAME, 
+    process.env.DB_USER, 
+    process.env.DB_PASSWORD, 
     {
-        host: '127.0.0.1',
-        port: '3306',
+        host: process.env.DB_HOST,
+        port: '3307',
         dialect: 'mysql',
         logging: false
     }
