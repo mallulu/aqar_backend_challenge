@@ -1,7 +1,7 @@
 const { AvailabilityCalendar, Apartments } = require('../models/init-models');
 const { Op } = require('sequelize');
-const { Errors } = require('../errors/Error');
 const { getApartmentWithStreetName } = require('../utils/FetchStreetNames');
+const Errors = require('../errors/Error');
 
 const availabilityCalendarsResolver = {
     Query: {
@@ -25,6 +25,7 @@ const availabilityCalendarsResolver = {
 
         async isApartmentAvailable(_, args, context) {
             let date = args.date ? new Date(args.date) : new Date();
+            console.log(args);
             const isAvailable = await AvailabilityCalendar.findOne({
                 include: {
                     model: Apartments, as: 'Apartment', required: true, where: {

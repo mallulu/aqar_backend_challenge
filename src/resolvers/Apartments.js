@@ -1,7 +1,7 @@
 const { Apartments, AvailabilityCalendar } = require('../models/init-models');
 const { Op } = require('sequelize');
 const { getApartmentsWithStreetNames } = require('../utils/FetchStreetNames');
-const { Errors } = require('../errors/Error');
+const Errors = require('../errors/Error');
 
 
 const apartmentsResolver = {
@@ -26,7 +26,7 @@ const apartmentsResolver = {
             let toDate = new Date(args.toDate);
 
             if (fromDate > toDate) {
-                throw new Error(Errors.INVALID_DATA)
+                throw new Error(Errors.INVALID_REQUEST);
             }
             let availableApartments = await Apartments.findAll({
                 include: {

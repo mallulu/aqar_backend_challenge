@@ -1,5 +1,5 @@
 const { Districts } = require('../models/init-models');
-const { Errors } = require('../errors/Error');
+const Errors = require('../errors/Error');
 
 const districtsResolver = {
     Query: {
