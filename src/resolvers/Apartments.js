@@ -26,7 +26,6 @@ const apartmentsResolver = {
             let toDate = new Date(args.toDate);
 
             if (fromDate > toDate) {
-                return null;
                 throw new Error(Errors.INVALID_DATA)
             }
             let availableApartments = await Apartments.findAll({

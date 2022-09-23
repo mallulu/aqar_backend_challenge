@@ -34,7 +34,7 @@ CREATE TABLE `Apartments` (
   KEY `Apartment_DistrictID_idx` (`DistrictID`),
   CONSTRAINT `Apartment_CityID_FK` FOREIGN KEY (`CityID`) REFERENCES `Cities` (`CityID`) ON UPDATE CASCADE,
   CONSTRAINT `Apartment_DistrictID_FK` FOREIGN KEY (`DistrictID`) REFERENCES `Districts` (`DistrictID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `Apartments` (
 
 LOCK TABLES `Apartments` WRITE;
 /*!40000 ALTER TABLE `Apartments` DISABLE KEYS */;
-INSERT INTO `Apartments` VALUES (1,'Apartment 24',1,1,_binary '\0\0\0\0\0\0\0ÆÄB=}\ƒ8@\ˆ∑\‡übG@');
+INSERT INTO `Apartments` VALUES (1,'Apartment 24',1,1,_binary '\0\0\0\0\0\0\0ÆÄB=}\ƒ8@\ˆ∑\‡übG@'),(2,'Apartment 35',1,1,_binary '\0\0\0\0\0\0\0O]˘,\œ\√8@πƒë\"cG@'),(3,'Apartment 12',1,2,_binary '\0\0\0\0\0\0\0\◊1Æ∏8\Œ8@\⁄8b->_G@'),(4,'Apartment 5',1,2,_binary '\0\0\0\0\0\0\0j1xò\Œ8@ü°ºè_G@'),(5,'Apartment 13',1,1,_binary '\0\0\0\0\0\0\0√º«ô&\ƒ8@˙\—p\ \‹bG@'),(6,'Apartment 12',2,3,_binary '\0\0\0\0\0\0\0 •\ÒØ∞5@=\1XçC@'),(7,'Apartment 12',2,3,_binary '\0\0\0\0\0\0\0®˝\÷Nî∞5@∏¨\¬fÄçC@'),(8,'Apartment 12',2,3,_binary '\0\0\0\0\0\0\0¡´\Â\ŒL∞5@ø—é~çC@'),(9,'Apartment 12',2,3,_binary '\0\0\0\0\0\0\0\ﬁt\À\ÒØ5@DLâ$zçC@'),(10,'Apartment 12',2,4,_binary '\0\0\0\0\0\0\0J$\—\À(r5@kGqé:§C@'),(11,'Apartment 12',2,4,_binary '\0\0\0\0\0\0\035	ﬁêr5@|õ˛\ÏG§C@'),(12,'Apartment 12',2,4,_binary '\0\0\0\0\0\0\0YâyV\“r5@eß\‘E§C@'),(13,'Apartment 12',2,4,_binary '\0\0\0\0\0\0\0\›(≤\÷Pr5@\ÃC¶|§C@'),(14,'Apartment 12',2,4,_binary '\0\0\0\0\0\0\0≠£™	r5@Sv˙A]§C@');
 /*!40000 ALTER TABLE `Apartments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +63,7 @@ CREATE TABLE `AvailabilityCalendar` (
   UNIQUE KEY `AvailabilityCalendarID_UNIQUE` (`AvailabilityCalendarID`),
   KEY `AvailabilityCalendar_ApartmentID_FK_idx` (`ApartmentID`),
   CONSTRAINT `AvailabilityCalendar_ApartmentID_FK` FOREIGN KEY (`ApartmentID`) REFERENCES `Apartments` (`ApartmentID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `AvailabilityCalendar` (
 
 LOCK TABLES `AvailabilityCalendar` WRITE;
 /*!40000 ALTER TABLE `AvailabilityCalendar` DISABLE KEYS */;
-INSERT INTO `AvailabilityCalendar` VALUES (1,1,'2022-01-17 00:00:00','2023-01-17 00:00:00');
+INSERT INTO `AvailabilityCalendar` VALUES (1,1,'2022-01-17 00:00:00','2023-01-17 00:00:00'),(2,2,'2022-05-01 00:00:00','2023-01-02 00:00:00'),(3,3,'2022-05-01 00:00:00','2023-01-02 00:00:00'),(4,4,'2022-05-01 00:00:00','2022-09-01 00:00:00'),(5,5,'2022-01-01 00:00:00','2023-02-01 00:00:00'),(6,6,'2022-03-01 00:00:00','2023-01-01 00:00:00'),(7,7,'2022-07-01 00:00:00','2022-12-01 00:00:00'),(8,8,'2022-01-01 00:00:00','2023-05-01 00:00:00'),(9,9,'2022-02-01 00:00:00','2022-08-01 00:00:00'),(10,10,'2022-08-01 00:00:00','2022-12-01 00:00:00'),(11,11,'2022-09-01 00:00:00','2023-01-01 00:00:00'),(12,11,'2022-11-01 00:00:00','2023-05-01 00:00:00'),(13,12,'2022-12-01 00:00:00','2023-03-01 00:00:00'),(14,13,'2022-01-01 00:00:00','2023-01-01 00:00:00'),(15,14,'2022-04-01 00:00:00','2022-10-01 00:00:00'),(16,2,'2022-07-01 00:00:00','2023-01-01 00:00:00'),(17,10,'2022-10-01 00:00:00','2023-02-01 00:00:00'),(18,11,'2022-09-01 00:00:00','2023-03-01 00:00:00');
 /*!40000 ALTER TABLE `AvailabilityCalendar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +88,7 @@ CREATE TABLE `Cities` (
   `CityName` varchar(45) NOT NULL,
   PRIMARY KEY (`CityID`),
   UNIQUE KEY `CityID_UNIQUE` (`CityID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `Cities` (
 
 LOCK TABLES `Cities` WRITE;
 /*!40000 ALTER TABLE `Cities` DISABLE KEYS */;
-INSERT INTO `Cities` VALUES (1,'Riyadh');
+INSERT INTO `Cities` VALUES (1,'Riyadh'),(2,'Jeddah');
 /*!40000 ALTER TABLE `Cities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +116,7 @@ CREATE TABLE `Districts` (
   UNIQUE KEY `DistrictID_UNIQUE` (`DistrictID`),
   KEY `CityID_FK_idx` (`CityID`),
   CONSTRAINT `District_CityID_FK` FOREIGN KEY (`CityID`) REFERENCES `Cities` (`CityID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `Districts` (
 
 LOCK TABLES `Districts` WRITE;
 /*!40000 ALTER TABLE `Districts` DISABLE KEYS */;
-INSERT INTO `Districts` VALUES (1,'King Faisal District',1);
+INSERT INTO `Districts` VALUES (1,'King Faisal District',1),(2,'Qurtubah',1),(3,'Al Murjan',2),(4,'Al Adl',2);
 /*!40000 ALTER TABLE `Districts` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -138,4 +138,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-23 14:46:03
+-- Dump completed on 2022-09-23 18:23:16
