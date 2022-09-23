@@ -62,6 +62,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
    ```
 3. The Docker instance should now be running:
   * Docker compose will create 2 images (one for MYSQL and one for the NodeJS app)
+  * The images have all their dependices containerized with them including the DB and all the dummy data
   * To verify the app is running you should get 2 messages on the console:
    ```sh
     Server running on port 8080
