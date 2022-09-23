@@ -26,6 +26,7 @@ const apartmentsResolver = {
             let toDate = new Date(args.toDate);
 
             if (fromDate > toDate) {
+                return null;
                 throw new Error(Errors.INVALID_DATA)
             }
             let availableApartments = await Apartments.findAll({
@@ -33,10 +34,10 @@ const apartmentsResolver = {
                     model: AvailabilityCalendar, as: "AvailabilityCalendars", required: true, 
                     where: {
                         FromDate: {
-                            [Op.lt]: fromDate
+                            [Op.lte]: fromDate
                         },
                         ToDate: {
-                            [Op.gt]: toDate
+                            [Op.gte]: toDate
                         }
                     }
                 }

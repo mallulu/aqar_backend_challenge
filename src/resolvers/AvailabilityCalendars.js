@@ -41,11 +41,7 @@ const availabilityCalendarsResolver = {
                 }
             })
 
-            if (!isAvailable) {
-                throw new Error(Errors.NO_VALUE);
-            }
-
-            if (isAvailable.length != 0) {
+            if (isAvailable) {
                 return true;
             }
 

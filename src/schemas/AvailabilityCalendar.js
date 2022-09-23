@@ -12,7 +12,7 @@ const availabilityCalendarDefs = gql`
 
     extend type Query {
         availabilityCalendars: [AvailabilityCalendar]
-        isApartmentAvailable(apartmentId: Int!, date: String): Boolean 
+        isApartmentAvailable(apartmentId: Int!, date: Date): Boolean 
         fetchApartmentAvailabilityTimes(apartmentId: Int!, date: Date): [AvailabilityCalendar]
     }
 
