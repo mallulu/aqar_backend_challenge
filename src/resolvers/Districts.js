@@ -1,4 +1,5 @@
 const { Districts } = require('../models/init-models');
+const { Errors } = require('../errors/Error');
 
 const districtsResolver = {
     Query: {
@@ -11,10 +12,10 @@ const districtsResolver = {
             });
             
             if (!districts) {
-                throw new Error('no districts');
-            } else {
-                return districts;
-            }
+                throw new Error(Errors.NOT_FOUND);
+            } 
+            return districts;
+            
           }
     }
 }

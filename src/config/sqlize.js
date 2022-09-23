@@ -7,6 +7,7 @@ module.exports = new Sqlize(
     {
         host: '127.0.0.1',
         port: '3306',
-        dialect: 'mysql'
+        dialect: 'mysql',
+        logging: false
     }
 );

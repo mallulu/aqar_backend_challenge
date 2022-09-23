@@ -7,6 +7,7 @@ const apartmentDefs = gql`
         ApartmentName: String
         City: City
         District: District
+        StreetAddress: String
         ApartmentCoordinates: Coordinates
     }
 

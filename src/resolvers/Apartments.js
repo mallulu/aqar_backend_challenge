@@ -1,10 +1,13 @@
 const { Apartments, AvailabilityCalendar } = require('../models/init-models');
 const { Op } = require('sequelize');
+const { getApartmentsWithStreetNames } = require('../utils/FetchStreetNames');
+const { Errors } = require('../errors/Error');
+
 
 const apartmentsResolver = {
     Query: {
         async apartments() {
-            const apartments = await Apartments.findAll({
+            let apartments = await Apartments.findAll({
                 include: {
                     all: true,
                     nested: true
@@ -12,16 +15,20 @@ const apartmentsResolver = {
             });
             
             if (!apartments) {
-                throw new Error('no apartments');
-            } else {
-                return apartments;
+                throw new Error(Errors.NOT_FOUND);
             }
+            apartments = await getApartmentsWithStreetNames(apartments);
+            return apartments;
         },
 
         async fetchAvailableApartments(_, args, context) {
             let fromDate = new Date(args.fromDate);
             let toDate = new Date(args.toDate);
-            const availableApartments = await Apartments.findAll({
+
+            if (fromDate > toDate) {
+                throw new Error(Errors.INVALID_DATA)
+            }
+            let availableApartments = await Apartments.findAll({
                 include: {
                     model: AvailabilityCalendar, as: "AvailabilityCalendars", required: true, 
                     where: {
@@ -34,6 +41,10 @@ const apartmentsResolver = {
                     }
                 }
             });
+            if (!availableApartments) {
+                throw new Error (Errors.NOT_FOUND)
+            }
+            availableApartments = getApartmentsWithStreetNames(availableApartments);
             return availableApartments;
         }
 

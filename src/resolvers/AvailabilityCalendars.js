@@ -1,5 +1,7 @@
 const { AvailabilityCalendar, Apartments } = require('../models/init-models');
 const { Op } = require('sequelize');
+const { Errors } = require('../errors/Error');
+const { getApartmentWithStreetName } = require('../utils/FetchStreetNames');
 
 const availabilityCalendarsResolver = {
     Query: {
@@ -10,12 +12,15 @@ const availabilityCalendarsResolver = {
                     nested: true
                 }
             });
-            
+
             if (!availabilityCalendars) {
-                throw new Error('no availabilityCalendars');
-            } else {
+                throw new Error(Errors.NO_VALUE);
+            }
+            for (const availability of availabilityCalendars) {
+                availability.Apartment = await getApartmentWithStreetName(availability.Apartment);
                 return availabilityCalendars;
             }
+
         },
 
         async isApartmentAvailable(_, args, context) {
@@ -36,23 +41,36 @@ const availabilityCalendarsResolver = {
                 }
             })
 
-            if (isAvailable) {
+            if (!isAvailable) {
+                throw new Error(Errors.NO_VALUE);
+            }
+
+            if (isAvailable.length != 0) {
                 return true;
             }
 
             return false;
         },
-        
+
         async fetchApartmentAvailabilityTimes(_, args, context) {
             const availabilityTimes = await AvailabilityCalendar.findAll({
                 include: {
-                    model: Apartments, as: 'Apartment', required: true, where: {
-                        ApartmentID: args.apartmentId
-                    }
+                    all: true, nested: true, required: true
+                },
+                where: {
+                    ApartmentID: args.apartmentId
                 }
-            })
+            });
 
-            return availabilityTimes
+            if (!availabilityTimes) {
+                throw new Error(Errors.NO_VALUE);
+            }
+
+            for (const availability of availabilityTimes) {
+                availability.Apartment = await getApartmentWithStreetName(availability.Apartment);
+            }
+            return availabilityTimes;
+
         }
     }
 }

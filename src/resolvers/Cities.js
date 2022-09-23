@@ -1,4 +1,5 @@
 const { Cities } = require('../models/init-models');
+const { Errors } = require('../errors/Error');
 
 const citiesResolver = {
     Query: {
@@ -11,10 +12,10 @@ const citiesResolver = {
             });
             
             if (!cities) {
-                throw new Error('no cities');
-            } else {
-                return cities;
+                throw new Error(Errors.NOT_FOUND);
             }
+            return cities;
+
           }
     }
 }
