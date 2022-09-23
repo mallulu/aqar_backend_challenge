@@ -13,11 +13,10 @@ const districtsResolver = {
             
             if (!districts) {
                 throw new Error(Errors.NOT_FOUND);
-            } 
+            };
             return districts;
-            
           }
     }
-}
+};
 
 module.exports = districtsResolver;

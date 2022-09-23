@@ -7,13 +7,13 @@ async function getStreetAddress(latlng) {
         .then((data) => {
             const streetName = data.results[0].formatted_address;
             if (streetName) {
-                return streetName
+                return streetName;
             }
             return null;
         })
         .catch(() => {
             return null;
-        })
+        });
     return request;
 }
 
@@ -22,7 +22,7 @@ async function getApartmentWithStreetName(apartment) {
     const streetName = await getStreetAddress(latlng);
     if (streetName) {
         apartment.StreetAddress = streetName;
-    }
+    };
     return apartment;
 }
 

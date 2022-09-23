@@ -13,11 +13,10 @@ const citiesResolver = {
             
             if (!cities) {
                 throw new Error(Errors.NOT_FOUND);
-            }
+            };
             return cities;
-
           }
     }
-}
+};
 
 module.exports = citiesResolver;

@@ -23,7 +23,7 @@ beforeAll(async () => {
 afterAll(async () => {
   await db.close();
   await server.stop();
-})
+});
 
 // Cities tests
 describe('cities', () => {
@@ -94,7 +94,7 @@ describe('availabiliy calendars', () => {
     };
     const result = await resolvers.Query.fetchApartmentAvailabilityTimes(null, args, null);
     expect(result.length).toEqual(3);
-  })
+  });
 });
 
 // FetchStreet tests

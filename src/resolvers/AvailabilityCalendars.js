@@ -15,11 +15,11 @@ const availabilityCalendarsResolver = {
 
             if (!availabilityCalendars) {
                 throw new Error(Errors.NO_VALUE);
-            }
+            };
             for (const availability of availabilityCalendars) {
                 availability.Apartment = await getApartmentWithStreetName(availability.Apartment);
                 return availabilityCalendars;
-            }
+            };
 
         },
 
@@ -40,12 +40,11 @@ const availabilityCalendarsResolver = {
                         [Op.gt]: date
                     }
                 }
-            })
+            });
 
             if (isAvailable) {
                 return true;
-            }
-
+            };
             return false;
         },
 
@@ -61,15 +60,14 @@ const availabilityCalendarsResolver = {
 
             if (!availabilityTimes) {
                 throw new Error(Errors.NO_VALUE);
-            }
+            };
 
             for (const availability of availabilityTimes) {
                 availability.Apartment = await getApartmentWithStreetName(availability.Apartment);
-            }
+            };
             return availabilityTimes;
-
         }
     }
-}
+};
 
 module.exports = availabilityCalendarsResolver;

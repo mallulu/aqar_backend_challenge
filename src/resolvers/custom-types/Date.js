@@ -19,7 +19,7 @@ const dateScalar = new GraphQLScalarType({
 
             // Convert graphql date type string to integer and then to Date
             return new Date(parseInt(grahpqlDateType.value, 10)); 
-        }
+        };
 
         // Invalid value (not an integer)
         return null; 
@@ -28,6 +28,6 @@ const dateScalar = new GraphQLScalarType({
 
 const dateResolver = {
     Date: dateScalar
-}
+};
 
 module.exports = dateResolver;

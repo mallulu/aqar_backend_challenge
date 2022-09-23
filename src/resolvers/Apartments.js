@@ -42,13 +42,13 @@ const apartmentsResolver = {
                 }
             });
             if (!availableApartments) {
-                throw new Error (Errors.NOT_FOUND)
-            }
+                throw new Error (Errors.NOT_FOUND);
+            };
             availableApartments = getApartmentsWithStreetNames(availableApartments);
             return availableApartments;
         }
 
     }
-}
+};
 
 module.exports = apartmentsResolver;

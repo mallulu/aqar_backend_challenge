@@ -17,6 +17,6 @@ const availabilityCalendarDefs = gql`
     }
 
 `
-    ;
+;
 
 module.exports = availabilityCalendarDefs;

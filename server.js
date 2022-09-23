@@ -1,8 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const db = require('./src/config/sqlize');
 const { ApolloServer, gql, UserInputError } = require('apollo-server-express');
 const schema = require('./src/schemas/RootSchema');
 const resolvers = require('./src/resolvers/RootResolver');
+
 
 // Initalize express server.
 const app = express();
@@ -22,8 +24,11 @@ function start() {
             server.applyMiddleware( { app });
 
             // Start express server.
-            app.listen(3000, console.log('Server running on port 3000'));
-        })
+            app.listen(process.env.NODE_DOCKER_PORT, () => {
+                console.log(`Server running on port ${process.env.NODE_LOCAL_PORT}`);
+                console.log(`You can use GraphQL on localhost:${process.env.NODE_LOCAL_PORT}/graphql`);
+            });
+        });
     }).catch((error) => {
         console.log('no connection', error);
     });
