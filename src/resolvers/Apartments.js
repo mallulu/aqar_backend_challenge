@@ -29,16 +29,16 @@ const apartmentsResolver = {
                 throw new Error(Errors.INVALID_REQUEST);
             }
             let availableApartments = await Apartments.findAll({
-                include: {
-                    model: AvailabilityCalendar, as: "AvailabilityCalendars", required: true, 
-                    where: {
-                        FromDate: {
-                            [Op.lte]: fromDate
-                        },
-                        ToDate: {
-                            [Op.gte]: toDate
-                        }
+                where: {
+                    '$AvailabilityCalendars.FromDate$': {
+                        [Op.lte]: fromDate
+                    },
+                    '$AvailabilityCalendars.ToDate$': {
+                        [Op.gte]: toDate
                     }
+                },
+                include: {
+                    all: true, nested: true
                 }
             });
             if (!availableApartments) {

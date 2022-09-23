@@ -1,7 +1,8 @@
-const key = "AIzaSyCLs0L0ov1TCNp3GOw4baNSne0fh1qyAMk";
+require('dotenv').config();
+const key = process.env.MAPS_KEY;
 
 async function getStreetAddress(latlng) {
-    const request = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latlng}&result_type=street_address&key=AIzaSyCLs0L0ov1TCNp3GOw4baNSne0fh1qyAMk`)
+    const request = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latlng}&result_type=street_address&key=${key}`)
         .then((response) => response.json())
         .then((data) => {
             const streetName = data.results[0].formatted_address;
