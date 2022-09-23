@@ -111,7 +111,7 @@ You can also access a deployed version of the service which is hosted on Digital
    ```
 7. Run the following command:
    ```sh
-   node server.js
+   npm start
    ```
    > NOTE: The service will run locally on port 3000
 
